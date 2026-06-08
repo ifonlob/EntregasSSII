@@ -2,48 +2,47 @@ version: '3.8'
 
 services:
   db:
-    image: mysql:8.0
-    container_name: bocado_magico_db
-    restart: always
+    image: postgres:15-alpine
+    container_name: bocado_db
     environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: bocadomagico
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
+      POSTGRES_USER: admin_bocado
+      POSTGRES_PASSWORD: password123
+      POSTGRES_DB: bocadodb
     volumes:
-      - db_data:/var/lib/mysql
+      - pgdata:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    restart: always
 
   backend:
     build: ./backend
-    container_name: bocado_magico_backend
-    restart: always
+    container_name: bocado_backend
     environment:
       DB_HOST: db
-      DB_USER: user
-      DB_PASSWORD: password
-      DB_NAME: bocadomagico
+      DB_USER: admin_bocado
+      DB_PASSWORD: password123
+      DB_NAME: bocadodb
+      DB_PORT: 5432
     depends_on:
       - db
-    expose:
-      - "3000"
+    restart: always
 
   bocado-magico:
     build: .
     container_name: bocado_magico_app
-    expose:
-      - "443"
-    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
     depends_on:
       - backend
+    restart: always
 
   cloudflared:
     image: cloudflare/cloudflared:latest
     container_name: bocado_tunnel
-    command: tunnel --url https://bocado-magico:443 --no-autoupdate --no-tls-verify
+    command: tunnel --url https://bocado-magico:443 --no-autoupdate --no-tls-verify --protocol http2
     restart: always
     depends_on:
       - bocado-magico
 
 volumes:
-  db_data:
-
+  pgdata:
