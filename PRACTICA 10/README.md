@@ -78,21 +78,6 @@ Copia ese enlace (ej. `https://...trycloudflare.com`) y pégalo en tu navegador 
 
 También puedes acceder localmente mediante `https://localhost`.
 
-### 3.4. Ejecución de Tests Automatizados
-
-El proyecto incluye un script de tests que verifica el correcto funcionamiento de todos los servicios. Para ejecutarlo:
-
-> bash tests/test.sh
-
-Este script comprueba automáticamente:
-- Que los cuatro contenedores están en ejecución.
-- Que el servidor web Nginx responde correctamente en HTTP y HTTPS.
-- Que el registro de usuarios funciona a través de la API (vía el proxy inverso de Nginx).
-- Que el inicio de sesión valida correctamente las credenciales contra PostgreSQL.
-- Que los datos persisten en la base de datos (conexión real app-BD).
-- Que las credenciales incorrectas son rechazadas (seguridad).
-- Que el volumen de persistencia (`pgdata`) está creado.
-
 ## 4. Resumen de Endpoints de la API
 
 | Método | Ruta            | Descripción                                   |
