@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bocado Mágico | Gourmet Minimalista</title>
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <script type="module" src="assets/js/firebase.js" defer></script>
+</head>
+<body>
+<header class="cabecera">
+    <a class="cabecera__enlace" href="./index.html">
+        <img class="cabecera__logo" src="./assets/imgs/logo.png" alt="Bocado Mágico Logo">
+    </a>
+    <h1 class="cabecera__titulo">Bocado Mágico</h1>
+    <nav class="cabecera__navegacion">
+        <ul class = "navegacion__lista">
+            <li class="navegacion__identificacion">
+                <img class="navegacion__usuario" src="./assets/imgs/usuario.png" alt="Usuario">
+                <a href="./login.html" class="navegacion__enlace">Iniciar sesión</a>
+            </li>
+            <li class="navegacion__identificacion">
+                <img class="navegacion__usuario" src="./assets/imgs/registro.png" alt="Usuario">
+                <a href="./registro.html" class="navegacion__enlace">Registrarse</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="introduccion">
+        <h2 class="introduccion__titulo">¿Deseas probar nuestros platos más irresistibles?</h2>
+        <p class="introduccion__descripcion">En Bocado Mágico seleccionamos nuestras recetas más queridas para que descubras lo mejor de la casa.</p>
+        <p class="introduccion__descripcion">Cada plato está pensado para despertar el apetito con ingredientes de calidad y presentación cuidada.</p>
+        <article class ="platos">
+            <img class="introduccion__platillo" src="./assets/imgs/platillo.png" alt="Pollo con verdura">
+            <img class="introduccion__platillo" src="./assets/imgs/espaguetis.jpg" alt="Espaguetis">
+        </article>
+    </section>
+    <section id="apartadoUsuario"></section>
+</main>
+
+<footer class="pie-pagina">
+    <p>&copy; 2026 Bocado Mágico. Alta cocina al alcance de tu mano.</p>
+</footer>
+</body>
+</html>
