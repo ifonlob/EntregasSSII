@@ -14,6 +14,8 @@
 
 Este módulo se encarga de comprobar si la dirección IP introducida es válida y en consecuencia si está en la red, teniendo en cuenta el sistema operativo en el que se ejecute.
 
+Durante la comprobación de conectividad muestra una animación de carga y limpia la consola en cada iteración hasta obtener el resultado.
+
 **Uso:**
 > python ping.py <dirección_ip>
 
@@ -150,7 +152,7 @@ El módulo realiza una serie de comprobaciones antes de interactuar con la red:
 
 |Problema | Solución |
 | :-- | :-- |
-| El comando ping no guarda logs | Verifica que la carpeta `logs` exista. Crear manualmente si hace falta: `mkdir logs` |
+| El comando ping no guarda logs | La salida de ping se descarta deliberadamente redirigiéndola a `NUL` (Windows) o `/dev/null` (Linux). Es el comportamiento esperado. |
 | No se reconoce python/py | Confirma que Python esté añadido al PATH del sistema. Reinicia la terminal si cambias la configuración. |
 | El módulo no limpia la consola | Según la terminal y sistema operativo, esta función puede no estar soportada. Prueba manualmente los comandos `clear`/`cls` en tu consola. |
 | Error de separador al introducir la IP | Asegúrate de escribir la IP separando los octetos con puntos: `192.168.1.1` |
